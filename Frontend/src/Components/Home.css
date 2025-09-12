@@ -1,0 +1,86 @@
+/* Contenedor general del Home */
+.home-container {
+  padding: 2rem;
+  background-color: #f9f9f9; /* fondo claro */
+  font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.home-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Subtítulos de cada tabla */
+.home-container h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* Estilo general de las tablas */
+.home-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 3rem; /* espacio entre tablas */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Encabezado de tabla */
+.home-container th {
+  background-color: #007bff;
+  color: #fff;
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: 500;
+}
+
+/* Celdas de datos */
+.home-container td {
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Filas alternadas */
+.home-container tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover sobre filas */
+.home-container tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-container table,
+  .home-container thead,
+  .home-container tbody,
+  .home-container th,
+  .home-container td,
+  .home-container tr {
+    display: block;
+  }
+
+  .home-container thead tr {
+    display: none;
+  }
+
+  .home-container tbody td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .home-container tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
