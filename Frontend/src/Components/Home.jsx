@@ -7,6 +7,7 @@ import {
   HOME_CURSOS,
   HOME_INSCRIPCION, // esta es la tabla inscripcion
 } from "../endpoints/endpoints";
+import "./Home.css";
 
 const Home = () => {
   // Estados para cada tabla

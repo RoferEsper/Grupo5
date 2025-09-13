@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    mostrarInscripciones,
+    mostrarInscripcion,
     crearInscripcion,
-    eliminarInscripcion
+    eliminarInscripcion,
+    buscarInscripcion // <-- agregamos búsqueda
 } = require('../controllers/inscripcion');
 
 // Listar todas las inscripciones (con join estudiante+curso)
-router.get("/", mostrarInscripciones);
+router.get("/", mostrarInscripcion);
+
+// Buscar inscripciones por estudiante, curso o fecha
+router.get("/buscar/query", buscarInscripcion); // <-- endpoint para buscador
 
 // Crear nueva inscripción
 router.post("/", crearInscripcion);

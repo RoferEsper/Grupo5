@@ -1,0 +1,75 @@
+/* Buscador.css */
+
+.buscador-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 700px;
+  font-family: Arial, sans-serif;
+}
+
+.buscador-form {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 3rem;
+  padding: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.buscador-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 1rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 3rem 0 0 3rem;
+}
+
+.buscador-form button {
+  background: #4a90e2;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0 1.5rem;
+  border-radius: 0 3rem 3rem 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.buscador-form button:hover {
+  background: #357ab7;
+}
+
+.btn-clear {
+  background: #e04a4a;
+  border-radius: 3rem;
+}
+
+.btn-clear:hover {
+  background: #b73737;
+}
+
+.resultados-lista {
+  width: 100%;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.resultados-lista li {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #ddd; /* línea suave */
+  transition: background 0.2s ease;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.resultados-lista li:hover {
+  background: #f5f5f5;
+}

@@ -74,10 +74,30 @@ const eliminarEstudiante = (req, res) => {
     );
 };
 
+// Buscar estudiantes por nombre, apellido o email
+const buscarEstudiantes = (req, res) => {
+    const { q } = req.query; // lo que escribe el usuario en la barra de búsqueda
+
+    if (!q || q.trim() === "") {
+        return res.status(400).json({ error: "Debes ingresar un término de búsqueda" });
+    }
+
+    connection.query(
+        `SELECT * FROM estudiantes 
+         WHERE nombre LIKE ? OR id_estudiante LIKE? OR apellido LIKE ? OR email LIKE ?`,
+        [`%${q}%`,`%${q}%`, `%${q}%`, `%${q}%`],
+        (error, results) => {
+            if (error) return res.status(500).json({ error: 'Error al buscar estudiantes' });
+            res.json(results);
+        }
+    );
+};
+
 module.exports = {
     mostrarEstudiantes,
     mostrarEstudiante,
     crearEstudiante,
     editarEstudiante,
-    eliminarEstudiante
+    eliminarEstudiante,
+    buscarEstudiantes
 };

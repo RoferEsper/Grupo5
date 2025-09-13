@@ -5,12 +5,14 @@ const {
     mostrarCursos,
     crearCurso,
     editarCurso,
-    eliminarCurso
+    eliminarCurso,
+    buscarCursos // <-- agregamos la función de búsqueda
 } = require('../controllers/cursos');
 
-router.get("/", mostrarCursos);        // Listar todos
-router.post("/", crearCurso);          // Crear nuevo
-router.put("/:id", editarCurso);       // Editar
-router.delete("/:id", eliminarCurso);  // Eliminar
+router.get("/", mostrarCursos);                 // Listar todos los cursos
+router.get("/buscar/query", buscarCursos);     // Búsqueda por nombre o descripción
+router.post("/", crearCurso);                  // Crear nuevo curso
+router.put("/:id", editarCurso);               // Editar curso
+router.delete("/:id", eliminarCurso);          // Eliminar curso
 
 module.exports = router;

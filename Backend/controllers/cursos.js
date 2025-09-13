@@ -1,6 +1,6 @@
 const { connection } = require('../config/dataBase');
 
-// Obtener todos los cursos
+// --- Mostrar todos los cursos ---
 const mostrarCursos = (req, res) => {
     connection.query('SELECT * FROM cursos', (error, results) => {
         if (error) return res.status(500).json({ error: 'Error al obtener los cursos' });
@@ -8,7 +8,7 @@ const mostrarCursos = (req, res) => {
     });
 };
 
-// Crear curso
+// --- Crear un curso ---
 const crearCurso = (req, res) => {
     const { nombre, descripcion } = req.body;
 
@@ -26,7 +26,7 @@ const crearCurso = (req, res) => {
     );
 };
 
-// Editar curso
+// --- Editar un curso ---
 const editarCurso = (req, res) => {
     const { id } = req.params;
     const { nombre, descripcion } = req.body;
@@ -42,9 +42,10 @@ const editarCurso = (req, res) => {
     );
 };
 
-// Eliminar curso
+// --- Eliminar un curso ---
 const eliminarCurso = (req, res) => {
     const { id } = req.params;
+
     connection.query(
         'DELETE FROM cursos WHERE id_curso = ?',
         [id],
@@ -56,9 +57,27 @@ const eliminarCurso = (req, res) => {
     );
 };
 
+// --- Buscar cursos por nombre o descripcion ---
+const buscarCursos = (req, res) => {
+    const { q } = req.query;
+
+    if (!q) {
+        return res.status(400).json({ error: "Falta el parámetro de búsqueda" });
+    }
+
+    const searchTerm = `%${q}%`;
+    const query = 'SELECT * FROM cursos WHERE nombre LIKE ? OR descripcion LIKE ?';
+
+    connection.query(query, [searchTerm, searchTerm], (error, results) => {
+        if (error) return res.status(500).json({ error: "Error al buscar cursos" });
+        res.json(results);
+    });
+};
+
 module.exports = {
     mostrarCursos,
     crearCurso,
     editarCurso,
-    eliminarCurso
+    eliminarCurso,
+    buscarCursos
 };
