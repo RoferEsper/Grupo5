@@ -1,1 +1,0 @@
-// aqui va la conxion del back con la bases de datos.

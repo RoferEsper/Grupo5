@@ -1,1 +1,0 @@
-// aqui van las consultas a mi base de datos.
